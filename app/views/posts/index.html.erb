@@ -1,0 +1,44 @@
+<%= link_to "Add New Post", new_post_path, class: "btn btn-primary" %>
+
+<h1>Posts</h1>
+
+<ul class="post">
+	<table class="table">
+	 	<thead class="thead-dark">
+		 	
+		 	<tr>
+		    <th>Title</th>
+		    <th>User</th>
+		    <th>Body</th>
+		    <th></th>
+	  	</tr>
+		</thead>
+		
+		<% @posts.each do |post| %>
+		<tr>
+		  <td><%= link_to post.title, post %></td>
+		  <td><%= post.user.email %></td>
+		  <td><%= post.body %></td>
+		</tr>
+		<% end %>
+	
+	</table>
+</ul>
+
+<ul class="post_cust">
+	<table class="table">
+	 	<thead class="thead-dark">
+		 	
+		 	<tr>
+		    <th>Users of Post Ids 1, 2 and 5 respectively</th>
+	  	</tr>
+		</thead>
+		
+		<% @users_cust.each do |user| %>
+		<tr>
+		  <td><%= user.email %></td>
+		</tr>
+		<% end %>
+	
+	</table>
+</ul>
