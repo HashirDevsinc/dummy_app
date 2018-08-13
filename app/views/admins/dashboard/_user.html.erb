@@ -1,0 +1,22 @@
+<h3>All Users</h3>
+
+<ul>
+	<table class="table">
+	 	<thead class="thead-dark">
+	 		<tr>
+		    <th>Email</th>
+		    <th>Total Posts</th>
+		    <th>Total Comments Reported by User</th>
+		  </tr>
+		</thead>
+		
+		<% @users.each do |user| %>
+			<tr>
+			  <td><%= user.email %></td>
+			  <td><%= user.posts.count %></td>
+			  <td><%= user.reported_comments.count %></td>
+				<td><%= button_to "Delete User", "", data: { confirm: "Are you sure?" }, method: :delete %></td>
+			</tr>
+		<% end %>
+	</table>
+</ul>
