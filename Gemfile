@@ -5,8 +5,11 @@ ruby '2.5.1'
 
 gem 'bootstrap-sass', '3.3.7'
 gem 'devise'
-
-
+gem "paperclip", "~> 6.0.0"
+gem "nested_form"
+gem "jquery-rails", '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
+gem "paranoia"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'

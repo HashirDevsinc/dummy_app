@@ -1,0 +1,7 @@
+<div>
+	<%= @comment.content %>
+	<b>by:</b> <%= @comment.user.email %>
+	<b>on:</b> <%= @comment.post.title %><br><b> <%= time_ago_in_words(@comment.created_at) %> </b>
+	
+	<%= link_to "Delete", [@post, @comment], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %>
+</div>

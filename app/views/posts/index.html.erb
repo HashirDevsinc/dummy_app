@@ -1,12 +1,17 @@
 <%= link_to "Add New Post", new_post_path, class: "btn btn-primary" %>
+</br>
+</br>
+<% if current_user.image %>
+	<%= image_tag current_user.image.picture.url(:thumb) %>
+	<%= current_user.email%>
+<% end %>
 
 <h1>Posts</h1>
 
 <ul class="post">
 	<table class="table">
 	 	<thead class="thead-dark">
-		 	
-		 	<tr>
+	 		<tr>
 		    <th>Title</th>
 		    <th>User</th>
 		    <th>Body</th>
@@ -21,9 +26,11 @@
 		  <td><%= post.body %></td>
 		</tr>
 		<% end %>
-	
 	</table>
 </ul>
+
+
+<% if false %>
 
 <ul class="post_cust">
 	<table class="table">
@@ -42,3 +49,5 @@
 	
 	</table>
 </ul>
+
+<% end %>

@@ -3,11 +3,7 @@ class PostsController < ApplicationController
 	
 	def index
 		@posts = Post.all
-		puts "=================================================================================================="
-		puts "=================================================================================================="
-		puts "=================================================================================================="
-		# @users_cust = User.includes(:posts).where(posts: {id: [1,2,5]})
-		@users_cust = User.joins(:posts).where(posts: {id: [1,2,5]})
+		# @users_cust = User.joins(:posts).where(posts: {id: [1,2,5]})
 	end
 
 	def new
@@ -24,18 +20,22 @@ class PostsController < ApplicationController
   	end
 	end
 
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		redirect_to posts_path
+	end
+
 	def show
 		@post = Post.find(params[:id])
 		@comments = @post.comments
-		puts "=================================================================================================="
-		puts "=================================================================================================="
-		puts "=================================================================================================="
-		# @commented_users = User.includes(:comments).where(comments: {post_id: 1})
-		@commented_users = User.joins(:comments).where(comments: {post_id: @post.id})
+		# @commented_users = User.joins(:comments).where(comments: {post_id: @post.id})
+
+		@comment = Comment.new		
 	end
 
 	private
   	def post_params
-  		params.require(:post).permit(:title, :body)
+  		params.require(:post).permit(:title, :body, images_attributes: [:id, :picture, :_destroy])
   	end
 end

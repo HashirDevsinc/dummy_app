@@ -1,24 +1,35 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<div>
-			<b>Post By: </b><%= @post.user.email %> </br>
+			<b>Post By: </b><%= @post.user.email %>	</br>
 			<b>Title: </b><%= @post.title %> </br>
-			<b>Body: </b><%= @post.body %>
+			<b>Body: </b><%= @post.body %></br>
+			<% if @post.images %>
+				<% @post.images.map do |i| %>
+					<%= image_tag i.picture.url(:thumb) %>
+				<% end %>
+			<% end %>
 		</div>
-		<div>
-			<b> Comments: </b>
-			<%= render @comments %>
-		</div>
-			<%= form_for [@post, Comment.new] do |f| %>
-		  
-		  <%= f.text_area :content, required: "required" %>
-		  <%= f.submit "Add Comment"%>
+		<% if @post.user.id == current_user.id %>
+		<%= link_to "Delete", [@post], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %>
 		<% end %>
+		<div>
+			<b> <%= @post.comments.count %> Comments: </b>
+			<section id="comment-section">
+				<ol id="comments"><%= render @comments %></ol>
+			</section>
+		</div>
+		<div id="comment-form">
+			<%= render 'comments/form' %>
+		</div>	
+
+		<% if false %>
 		<div>
 			<b>Comments fetched by query:</b></br>
 			<% @commented_users.each do |user| %>
 				<%= user.email %> commented on Post "Kuch Bhi"</br>
 			<% end %>
 		</div>
+		<% end %>
 	</div>
 </div>

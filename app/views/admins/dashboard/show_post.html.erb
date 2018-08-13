@@ -1,0 +1,6 @@
+<div>
+	<%= @post.title %><br>
+	with: <%= @post.body %><br>
+	<b>by:</b> <%= @post.user.email %>
+	<br><b> <%= time_ago_in_words(@post.created_at) %> </b>
+</div>

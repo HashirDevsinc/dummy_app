@@ -1,0 +1,2 @@
+module MyBaseAdminHelper
+end

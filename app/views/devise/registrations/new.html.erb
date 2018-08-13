@@ -3,8 +3,14 @@
     <div class="col-md-6 col-md-offset-3">
       <h2>Sign up</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= nested_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
+
+        <div class="field">
+        <%= f.fields_for :image, resource.image || resource.build_image do |image_form| %>
+          <%= image_form.file_field :picture %>
+        <% end %>
+        </div>
 
         <div class="field">
           <%= f.label :email %><br />

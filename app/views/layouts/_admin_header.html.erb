@@ -1,0 +1,22 @@
+<header class="navbar navbar-fixed-top navbar-inverse" style="height:60px">
+	<div class="container">
+		<%= link_to "Dummy_app", root_path, id: "logo" %>
+
+		<nav>
+			<ul class="nav navbar-nav navbar-right .nav-area">
+				<li><%= link_to "Home", root_path %></li>
+				
+
+				<% if admin_signed_in? %>
+					
+					<li ><%= link_to current_admin.email, edit_admin_registration_path %></li>
+					<li ><%= link_to "Log out", destroy_admin_session_path, method: :delete %></li>
+							
+				<% else %>
+					<li><%= link_to "Log in", new_user_session_path %></li>
+				<% end %>
+
+			</ul>
+		</nav>
+	</div>
+</header>

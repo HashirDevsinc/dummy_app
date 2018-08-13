@@ -1,4 +1,10 @@
 <div><%= comment.content %>
 	<b>by:</b> <%= comment.user.email %>
-	<b>on:</b> <%= comment.post.title %>
+	<b>on:</b> <%= comment.post.title %><br><b> <%= time_ago_in_words(comment.created_at) %> </b>
+	
+	<% if ( (current_user.id == comment.user_id) || (current_user.id == @post.user_id) ) %>
+	<%= link_to "Edit", edit_post_comment_path(@post, comment), remote: true %>
+	 | <%= link_to "Delete", [@post, comment], method: :delete, data: {confirm: "Phir souch ly!"}, remote: true %>
+	 | <% end %>
+	<%= link_to "Report", report_comment_post_comment_path(@post, comment) %>
 </div>

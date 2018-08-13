@@ -1,0 +1,7 @@
+<div>
+	<%= @reporter.email %><br>
+	<b>Comments Reported:</b> <% @reporter.user_reports.each do |comment| %>
+ 		<%= link_to comment.content, admins_comment_path(comment) %>, 
+ 	<% end %>
+
+</div>

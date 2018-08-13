@@ -1,0 +1,2 @@
+class Awaen < ApplicationRecord
+end
