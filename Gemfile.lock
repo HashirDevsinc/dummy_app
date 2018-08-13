@@ -135,6 +135,7 @@ GEM
       terrapin (~> 0.6.0)
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
+    pg (0.20.0)
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.5)
@@ -244,6 +245,7 @@ DEPENDENCIES
   nested_form
   paperclip (~> 6.0.0)
   paranoia
+  pg (= 0.20.0)
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails-ujs (~> 0.1.0)
