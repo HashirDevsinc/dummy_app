@@ -16,17 +16,18 @@
       <%= render 'layouts/admin_sidebar' %>
     <% end %>
     <!-- Page Content -->
-    <div style="margin-left:10%">
+    <div style="margin-left:13%">
     
-    <div class="container">
-      
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-    <%= yield %>
+      <div class="container">
+        
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      <%= yield %>
+      </div>
 
     </div>
   </body>

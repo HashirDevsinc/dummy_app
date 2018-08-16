@@ -2,6 +2,6 @@
 	<tr>
 	  <td><%= post.title %></td>
 	  <td><%= post.body %></td>
-	  <td><%= post.user.email %></td>
+	  <td><% if post.user %><%= post.user.email %><% end %></td>
 	</tr>
 <% end %>

@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		@comments = @post.comments.with_deleted
+		@comments = @post.comments
 		# @comments = @post.comments.includes(:user).where(users: {deleted_at: nil})
 		# @commented_users = User.joins(:comments).where(comments: {post_id: @post.id})
 

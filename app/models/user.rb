@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :image, :allow_destroy => true
 
-  acts_as_paranoid
+  # acts_as_paranoid
 
   def soft_delete  
     update_attribute(:deleted_at, Time.current)

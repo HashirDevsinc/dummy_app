@@ -1,6 +1,6 @@
 <div><%= comment.content %>
 	<b>by:</b>
-	<% if comment.user %>
+	<% if comment.user.deleted_at.blank? %>
 		<%= comment.user.email %>
 	<% else %>
 		<b>Anonymous User</b>
