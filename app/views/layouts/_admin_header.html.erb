@@ -4,9 +4,6 @@
 
 		<nav>
 			<ul class="nav navbar-nav navbar-right .nav-area">
-				<li><%= link_to "Home", root_path %></li>
-				
-
 				<% if admin_signed_in? %>
 					
 					<li ><%= link_to current_admin.email, edit_admin_registration_path %></li>

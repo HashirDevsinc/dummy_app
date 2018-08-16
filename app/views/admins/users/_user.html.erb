@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user.email %></td>
+  <td><%= user.posts.count %></td>
+  <td><%= user.user_reports.count %></td>
+  <% if user.deleted_at? %>
+  	<td>Cancelled!</td>
+  <% else %>
+  	<td><%= button_to "Cancel Account", admins_destroy_user_path(id: user.id), data: { confirm: "Are you sure?" }, method: :post %></td>
+  	<% end %>
+</tr>

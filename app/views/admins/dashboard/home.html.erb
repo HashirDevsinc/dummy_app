@@ -1,3 +1,15 @@
 <div>
-	<%= render 'reported_comments' %>
+	<h3>All Users</h3>
+	<ul>
+		<table class="table">
+		 	<thead class="thead-dark">
+		 		<tr>
+			    <th>Email</th>
+			    <th>Total Posts</th>
+			    <th>Total Comments Reported by User</th>
+			  </tr>
+			</thead>
+				<%= render @users %>
+			</table>
+	</ul>
 </div>

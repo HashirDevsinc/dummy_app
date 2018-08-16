@@ -12,4 +12,20 @@ class User < ApplicationRecord
   has_one :image, :as => :imageable
 
   accepts_nested_attributes_for :image, :allow_destroy => true
+
+  acts_as_paranoid
+
+  def soft_delete  
+    update_attribute(:deleted_at, Time.current)
+    @posts = Post.where(user_id: id)
+    @posts.each do |post|
+      post.destroy
+    end 
+  end  
+  
+  # ensure user account is active  
+  def active_for_authentication?  
+    super && !deleted_at
+    # update_attribute(:deleted_at, nil)    
+  end
 end

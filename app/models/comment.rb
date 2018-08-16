@@ -7,5 +7,7 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
+  scope :reported_comments, -> { joins(:reporters) }
+
   acts_as_paranoid
 end

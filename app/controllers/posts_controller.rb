@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
-		@posts = Post.all
+		@posts = Post.includes(:user).where(users: {deleted_at: nil})
 		# @users_cust = User.joins(:posts).where(posts: {id: [1,2,5]})
 	end
 
@@ -28,7 +28,8 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		@comments = @post.comments
+		@comments = @post.comments.with_deleted
+		# @comments = @post.comments.includes(:user).where(users: {deleted_at: nil})
 		# @commented_users = User.joins(:comments).where(comments: {post_id: @post.id})
 
 		@comment = Comment.new		

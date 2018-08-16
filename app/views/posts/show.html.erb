@@ -14,7 +14,7 @@
 		<%= link_to "Delete", [@post], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %>
 		<% end %>
 		<div>
-			<b> <%= @post.comments.count %> Comments: </b>
+			<b> <%= @comments.count %> Comments: </b>
 			<section id="comment-section">
 				<ol id="comments"><%= render @comments %></ol>
 			</section>

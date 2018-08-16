@@ -1,0 +1,32 @@
+<div>
+	<% if @comments.present? %>
+	<h3>Reported Comments</h3>
+
+	<ul>
+		<table class="table">
+		 	<thead class="thead-dark">
+		 		<tr>
+			    <th>Coment Content</th>
+			    <th>Post Title</th>
+			    <th>Reported By:</th>
+		  	</tr>
+			</thead>
+			
+			<% @comments.each do |comment| %>
+				<% if comment.reporters.count != 0 %>
+				<tr>
+				  <td><%= link_to comment.content, admins_comment_path(comment) %></td>
+				  <td><%= link_to comment.post.title, admins_post_path(comment.post) %></td>
+				  <td>
+				  	<% comment.reporters.each do |reporter| %>
+				  		<%= link_to reporter.email, admins_reporter_path(reporter) %><br> 
+				  	<% end %>
+				  </td>
+			  	<td><%= button_to "Delete", admins_destroy_comment_path(id: comment.id), data: { confirm: "Are you sure?" }, method: :post %></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</ul>
+<% end %>
+</div>

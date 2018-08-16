@@ -1,0 +1,7 @@
+<% @deleted_posts.each do |post| %>
+	<tr>
+	  <td><%= post.title %></td>
+	  <td><%= post.body %></td>
+	  <td><%= post.user.email %></td>
+	</tr>
+<% end %>

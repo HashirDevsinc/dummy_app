@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'user/registrations' }
   devise_for :admins
   
   resources :posts do
@@ -14,12 +14,18 @@ Rails.application.routes.draw do
   authenticated :admin do
     root to: 'admins/dashboard#home'
     namespace :admins do
-      get '/show', to: 'dashboard#show'
-      get '/show_deleted', to: 'dashboard#show_deleted'
+      get '/reported_comments', to: 'dashboard#reported_comments'
+      
+      get '/deleted_comments', to: 'dashboard#deleted_comments'
+      get '/deleted_posts', to: 'dashboard#deleted_posts'
+      get '/deleted_users', to: 'dashboard#deleted_users'
 
       get '/comments/:id', to: 'dashboard#show_comment', as: "comment"
       get '/posts/:id', to: 'dashboard#show_post', as: "post"
-      get '/reporters/:id', to: 'dashboard#show_reporter', as: "reporter"    
+      get '/reporters/:id', to: 'dashboard#show_reporter', as: "reporter"
+      
+      post '/destroy_comment', to: 'dashboard#destroy_comment', as: "destroy_comment"
+      post '/destroy_user', to: 'dashboard#destroy_user', as: "destroy_user"
     end
   end
 

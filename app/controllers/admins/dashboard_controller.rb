@@ -1,18 +1,23 @@
 class Admins::DashboardController < Admins::BaseController
-	# before_action :authenticate_admin!
 
-	# layout "admin"
-	
 	def home
-  	@comments = Comment.all
+  	@users = User.all
 	end
 
-	def show
+	def reported_comments
+		@comments = Comment.reported_comments
 	end
 
-	def show_deleted
+	def deleted_comments
   	@deleted_comments = Comment.only_deleted
+	end
+
+	def deleted_posts
   	@deleted_posts = Post.only_deleted
+	end
+
+	def deleted_users
+  	@deleted_users = User.where.not(deleted_at: nil)
 	end
 	
 	def show_comment
@@ -28,4 +33,19 @@ class Admins::DashboardController < Admins::BaseController
 		@reporter = User.find(params[:id])
 	end
 
+	def destroy_comment
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to root_path
+	end
+
+	def destroy_user
+		@user = User.find(params[:id])
+    @user.update_attribute(:deleted_at, Time.current)
+    @posts = Post.where(user_id: @user.id)
+    @posts.each do |post|
+      post.destroy
+    end 
+    redirect_to root_path
+	end
 end

@@ -1,5 +1,10 @@
 <div><%= comment.content %>
-	<b>by:</b> <%= comment.user.email %>
+	<b>by:</b>
+	<% if comment.user %>
+		<%= comment.user.email %>
+	<% else %>
+		<b>Anonymous User</b>
+	<% end %>
 	<b>on:</b> <%= comment.post.title %><br><b> <%= time_ago_in_words(comment.created_at) %> </b>
 	
 	<% if ( (current_user.id == comment.user_id) || (current_user.id == @post.user_id) ) %>

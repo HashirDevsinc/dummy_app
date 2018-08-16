@@ -1,0 +1,6 @@
+<% @deleted_users.each do |user| %>
+	<tr>
+	  <td><%= user.email %></td>
+	  <td><%= time_ago_in_words(user.deleted_at) %> ago</td>
+	</tr>
+<% end %>
