@@ -8,7 +8,8 @@
 				
 
 				<% if user_signed_in? %>
-					<li ><%= link_to "Posts", posts_path %></li>
+					<li ><%= link_to "Timeline", posts_path %></li>
+					<li ><%= link_to "Profile", profile_path %></li>
 					
 					<li ><%= link_to current_user.email, edit_user_registration_path %></li>
 					<li ><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>

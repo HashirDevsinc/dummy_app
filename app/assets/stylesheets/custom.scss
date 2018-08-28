@@ -20,6 +20,7 @@ html {
 
 /* universal */
 body {
+background-color: #DCDCDC;
 position: relative;
 margin: 0;
 padding-bottom: 6rem;
@@ -73,7 +74,7 @@ line-height: 1.7em;
 float: left;
 margin-right: 10px;
 font-size: 1.7em;
-color: #fff;
+color: #808080;
 text-transform: uppercase;
 letter-spacing: -1px;
 padding-top: 9px;
@@ -83,25 +84,6 @@ font-weight: bold;
 color: #fff;
 text-decoration: none;
 }
-
-/*.navbar-nav li.active > a {
-	background-color: #333;
-	color: #fff;
-}*/
-
-/*.header-li.active{
-	color: #fff;
-}*/
-
-
-/*.active:active {
-  color: red;
-}
-
-.nav-area li.active a{
-	color: blue;
-}*/
-
 
 /* footer */
 
@@ -164,30 +146,8 @@ color: $state-danger-text;
 }
 }
 
-
-.project {
-	list-style: none;
-	margin: 0;
-	li {
-		overflow: auto;
-		padding: 10px 0;
-		border-bottom: 1px solid $gray-lighter;
-	}
-}
-
-
-.remove_btn{
-	padding: 6px 98px;
-}
-
-.add_btn{
-	padding: 6px 114px;
-}
-
-
-
 /* Table */
-/*table {
+table {
     border-collapse: collapse;
     width: 100%;
 }
@@ -197,4 +157,4 @@ th, td {
     text-align: left;
     border: 1px solid #ddd;
 }
-tr:nth-child(even) {background-color: #f2f2f2;}css*/
+tr:nth-child(even) {background-color: #f2f2f2;}

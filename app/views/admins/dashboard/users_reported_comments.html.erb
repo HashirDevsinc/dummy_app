@@ -1,0 +1,42 @@
+<div>
+	<h3>Reported Comments by Each User</h3>	
+	<ul>
+		<table class="table">
+		 	<thead class="thead-dark">
+		 		<tr>
+			    <th>Email</th>
+			    <th>Total Comments Reported by User</th>
+			  </tr>
+			</thead>
+			
+			<% @users.each do |user| %>
+				<tr>
+				  <td><%= user.email %></td>
+				  <td><%= user.user_reports.with_deleted.count %></td>
+				</tr>
+			<% end %>
+		</table>
+	</ul>
+</div><br>
+<div>
+	<h3>Reported Comments of Each User</h3>	
+	<ul>
+		<table class="table">
+		 	<thead class="thead-dark">
+		 		<tr>
+			    <th>Email</th>
+			    <th>Total Comments Reported of User</th>
+			  </tr>
+			</thead>
+			
+			<% @users.each do |user| %>
+				<tr>
+				  <td><%= user.email %></td>
+				  <td><%= user.comments.with_deleted.reported_comments.count %></td>
+				</tr>
+			<% end %>
+		</table>
+	</ul>
+</div>
+
+<%= column_chart Comment.with_deleted.joins(:user).joins(:reporters).group('users.email').count, xtitle: "Users", ytitle: "No. of Comments Reported" %>

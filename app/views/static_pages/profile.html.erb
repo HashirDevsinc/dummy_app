@@ -8,8 +8,10 @@
 		<br><br>
 		<%= link_to "Create New", new_post_path, class: "btn btn-primary" %>
 	</div>
+	
 	<div class="col-md-8">
-		<h1>Posts</h1>
+
+		<h1>My Posts</h1>
 
 		<ul class="post">
 			<table class="table">
@@ -22,37 +24,15 @@
 			  	</tr>
 				</thead>
 				
-				<% @posts.each do |post| %>
+				<% current_user.posts.each do |post| %>
 				<tr>
 				  <td><%= link_to post.title, post %></td>
 				  <td><%= post.user.email %></td>
 				  <td><%= post.body %></td>
+				  <td><%= link_to "Delete", [post], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %></td>
 				</tr>
 				<% end %>
 			</table>
 		</ul>
-
-
-		<% if false %>
-
-		<ul class="post_cust">
-			<table class="table">
-			 	<thead class="thead-dark">
-				 	
-				 	<tr>
-				    <th>Users of Post Ids 1, 2 and 5 respectively</th>
-			  	</tr>
-				</thead>
-				
-				<% @users_cust.each do |user| %>
-				<tr>
-				  <td><%= user.email %></td>
-				</tr>
-				<% end %>
-			
-			</table>
-		</ul>
-
-		<% end %>
 	</div>
 </div>

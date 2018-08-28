@@ -23,11 +23,13 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to posts_path
+		redirect_to profile_path
 	end
 
 	def show
 		@post = Post.find(params[:id])
+		@like = Like.find_by(post_id: @post.id, user_id: current_user.id)
+		@likes = @post.likes
 		@comments = @post.comments
 		# @comments = @post.comments.includes(:user).where(users: {deleted_at: nil})
 		# @commented_users = User.joins(:comments).where(comments: {post_id: @post.id})

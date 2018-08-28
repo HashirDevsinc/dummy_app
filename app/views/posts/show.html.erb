@@ -1,5 +1,12 @@
 <div class="row">
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-2">
+		</br>
+		<% if current_user.image %>
+			<%= image_tag current_user.image.picture.url(:thumb) %><br>
+			<%= current_user.email%>
+		<% end %>
+	</div>
+	<div class="col-md-6 col-md-offset-1">
 		<div>
 			<b>Post By: </b><%= @post.user.email %>	</br>
 			<b>Title: </b><%= @post.title %> </br>
@@ -14,6 +21,7 @@
 		<%= link_to "Delete", [@post], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %>
 		<% end %>
 		<div>
+			<div id="like"><%= render 'likes/likes', like: @like, likes: @likes %></div>
 			<b> <%= @comments.count %> Comments: </b>
 			<section id="comment-section">
 				<ol id="comments"><%= render @comments %></ol>

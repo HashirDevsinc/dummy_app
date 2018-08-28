@@ -1,0 +1,14 @@
+<%= tabs do |c| %>
+  <% c.tab 'Comments Wise' do %>
+    <span>
+    	<h3>Comment Wise Graph</h3>
+			<%= column_chart Comment.joins(:user).group('users.email').count, xtitle: "Users", ytitle: "Comments" %>
+    </span>
+  <% end %>
+  <% c.tab 'Posts Wise' do %>
+    <span>
+    	<h3>Post Wise Graph</h3>
+			<%= column_chart Post.joins(:user).group('users.email').count, xtitle: "Users", ytitle: "Posts"  %>
+		</span>
+  <% end %>
+<% end %>

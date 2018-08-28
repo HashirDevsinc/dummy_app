@@ -48,4 +48,11 @@ class Admins::DashboardController < Admins::BaseController
     end 
     redirect_to root_path
 	end
+
+	def users_reported_comments
+  	@users = User.all
+	end
+
+	def graphs
+	end
 end

@@ -1,0 +1,6 @@
+<% if like %>
+	<%= link_to "Unlike", post_unlike_path(post_id: @post.id), method: :delete, remote: :true %>
+<% else %>
+	<%= link_to "Like", post_like_path(post_id: @post.id), method: :post, remote: :true %>
+<% end %>
+| <b> <%= likes.count %> Likes </b>

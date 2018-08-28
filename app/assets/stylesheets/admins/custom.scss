@@ -1,12 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
-
 $gray-medium-light: #eaeaea;
 
-
-.wrapper {
+/*.wrapper {
     display: flex;
     width: 100%;
 }
@@ -22,7 +19,7 @@ $gray-medium-light: #eaeaea;
     color: #fff;
     transition: all 0.3s;
 }
-
+*/
 @mixin box_sizing {
 -moz-box-sizing:
 border-box;
@@ -38,13 +35,13 @@ html {
 
 /* universal */
 body {
-position: relative;
-margin: 0;
-padding-bottom: 6rem;
-min-height: 100%;
-
-
-padding-top: 60px;
+  background-color: #DCDCDC !important;
+  font-family: "Lato", sans-serif;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  padding-top: 60px;
 }
 section {
 overflow: auto;
@@ -89,9 +86,9 @@ line-height: 1.7em;
 /* header */
 #logo {
 float: left;
-margin-right: 10px;
+margin-right: 110px;
 font-size: 1.7em;
-color: #fff;
+color: #808080;
 text-transform: uppercase;
 letter-spacing: -1px;
 padding-top: 9px;
@@ -102,25 +99,6 @@ color: #fff;
 text-decoration: none;
 }
 
-/*.navbar-nav li.active > a {
-	background-color: #333;
-	color: #fff;
-}*/
-
-/*.header-li.active{
-	color: #fff;
-}*/
-
-
-/*.active:active {
-  color: red;
-}
-
-.nav-area li.active a{
-	color: blue;
-}*/
-
-
 /* footer */
 
 footer {
@@ -128,10 +106,7 @@ position: absolute;
 right: 0;
 bottom: 0;
 left: 0;
-
-
 padding: 2rem;
-
 margin-top: 45px;
 padding-top: 5px;
 border-top: 1px solid #eaeaea;
@@ -169,43 +144,86 @@ input {
 }
 
 #error_explanation {
-color: red;
-ul {
-color: red;
-margin: 0 0 30px 0;
-}
+    color: red;
+    ul {
+    color: red;
+    margin: 0 0 30px 0;
+    }
 }
 .field_with_errors {
-@extend .has-error;
-.form-control {
-color: $state-danger-text;
-}
-}
-
-
-.project {
-	list-style: none;
-	margin: 0;
-	li {
-		overflow: auto;
-		padding: 10px 0;
-		border-bottom: 1px solid $gray-lighter;
-	}
+    @extend .has-error;
+    .form-control {
+    color: $state-danger-text;
+    }
 }
 
-
-.remove_btn{
-	padding: 6px 98px;
+/* Fixed sidenav, full height */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /*background-color: #111;*/
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
-.add_btn{
-	padding: 6px 114px;
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
 }
 
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.activee {
+    background-color: grey;
+    color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    /*background-color: #262626;*/
+    padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    padding-right: 0px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
 
 /* Table */
-/*table {
+table {
     border-collapse: collapse;
     width: 100%;
 }
@@ -215,4 +233,4 @@ th, td {
     text-align: left;
     border: 1px solid #ddd;
 }
-tr:nth-child(even) {background-color: #f2f2f2;}css*/
+tr:nth-child(even) {background-color: #f2f2f2;}
