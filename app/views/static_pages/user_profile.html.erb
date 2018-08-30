@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-md-2">
+		</br>
+		<% if @user.image %>
+			<%= image_tag @user.image.picture.url(:thumb) %><br>
+		<% end %>
+			<%= @user.email%>
+		<br><br>
+	<br>
+	<% if @friends.blank? %>
+		<%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
+	<% end %>
+	</div>
+	
+	<div class="col-md-8">
+	<% if @friends.present? %>
+		<% if @user.posts.present? %>
+
+			<h1>Posts</h1>
+
+			<ul class="post">
+				<table class="table">
+				 	<thead class="thead-dark">
+				 		<tr>
+					    <th>Title</th>
+					    <th>User</th>
+					    <th>Body</th>
+					    <th></th>
+				  	</tr>
+					</thead>
+					
+					<% @user.posts.each do |post| %>
+					<tr>
+					  <td><%= link_to post.title, post %></td>
+					  <td><%= post.user.email %></td>
+					  <td><%= post.body %></td>
+					  <td><%= link_to "Delete", [post], method: :delete, data: {confirm: "Ae asal ich delete ni houna!"}, remote: true %></td>
+					</tr>
+					<% end %>
+				</table>
+			</ul>
+		<% else %>
+			<h3>No Posts yet.</h3>
+		<% end %>
+	<% else %>
+		<h3>You can't see posts as you're not friends with <%= @user.email %></h3>
+	<% end %>
+	</div>
+</div>

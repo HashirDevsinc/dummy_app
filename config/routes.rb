@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  # get 'friendships/create'
+  # get 'friendships/update'
+  # get 'friendships/destroy'
   devise_for :users, :controllers => { registrations: 'user/registrations' }
   devise_for :admins
   
+  resources :friendships, only: [:create, :update, :destroy]
+
   resources :posts do
     resources :comments do
       member do
@@ -33,6 +38,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'static_pages#home'
     get 'profile', to: 'static_pages#profile'
+    get 'user_profile', to: 'static_pages#user_profile'
   end
 
   root to: 'static_pages#home'
